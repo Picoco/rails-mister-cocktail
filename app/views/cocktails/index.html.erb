@@ -1,0 +1,28 @@
+<div class="banner">
+  <div class="banner-content">
+    <h1>Cocktail App</h1>
+    <p>Find the best cocktails added by our communnity</p>
+  </div>
+</div>
+<h2 class="text-center">Here are our existing cocktails</h2>
+<div class="container">
+  <% @cocktails.each do |cocktail| %>
+    <div class="row">
+      <div class="col-xs-4">
+        <%= link_to cocktail_path(cocktail) do %>
+          <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('https://source.unsplash.com/user/erondu');">
+            <div class="card-description">
+              <h2><%= cocktail.name.capitalize %></h2>
+              <p>Very cool recipe of the <%= cocktail.name.capitalize %></p>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+    </div>
+  <%= link_to new_cocktail_path do %>
+    <i class="fa fa-plus-square" aria-hidden="true"></i>
+    <span>Add a new cocktail</span>
+  <% end %>
+</div>
+

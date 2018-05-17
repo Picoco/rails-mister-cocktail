@@ -1,0 +1,16 @@
+<div class="container">
+  <h1>Add a new cocktail</h1>
+
+  <%= simple_form_for(@cocktail) do |f| %>
+    <%= f.input :name %>
+    <br>
+    <%= f.submit class:'btn btn-primary' %>
+  <% end %>
+  <br>
+  <div class="container">
+    <%= link_to cocktails_path do %>
+      <i class="fa fa-undo" aria-hidden="true"></i>
+      <span>Go back to the list</span>
+    <% end %>
+  </div>
+</div>

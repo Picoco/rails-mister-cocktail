@@ -1,0 +1,31 @@
+<div class="container">
+  <h1><%= @cocktail.name.capitalize %></h1>
+
+  <% if @cocktail.ingredients.empty? %>
+    <p>There are no ingredients for this cocktail.</p>
+  <% else %>
+    <p>Here are the ingredients you need to make a <%= @cocktail.name.downcase %>:</p>
+    <ul class="list-unstyled">
+       <% @cocktail.doses.each do |dose| %>
+        <li>
+          <%= dose.ingredient.name.capitalize %> -
+          <%= dose.description %> -
+          <%= link_to dose_path(dose), method: :delete, data: { confirm: "Are you sure?" } do %>
+            <i class="far fa-trash-alt" aria-hidden="true"></i>
+          <% end %>
+        </li>
+      <% end %>
+    </ul>
+  <% end %>
+
+  <%= link_to new_cocktail_dose_path(@cocktail) do %>
+    <i class="fa fa-plus-square" aria-hidden="true"></i>
+    <span>Add a new ingredient</span>
+  <% end %>
+  <br>
+  <br>
+  <%= link_to cocktails_path do %>
+    <i class="fa fa-undo" aria-hidden="true"></i>
+    <span>Go back to the list</span>
+  <% end %>
+</div>

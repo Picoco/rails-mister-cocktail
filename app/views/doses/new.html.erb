@@ -1,0 +1,24 @@
+<div class="container">
+  <h1>Add new ingredient to <%= @cocktail.name %></h1>
+  <%= simple_form_for([@cocktail, @dose]) do |f| %>
+    <%= f.error_notification %>
+    <%= f.association :ingredient, collection: Ingredient.order(:name), prompt: "Choose an Ingredient" %>
+     <% if @dose.errors.any? %>
+      <div class="errors-container">
+        <p>This ingredient has already bean added. Please choose an other ingredient.</p>
+      </div>
+    <% end %>
+    <%= f.input :description %>
+    <br>
+    <%= f.submit class:'btn btn-primary' %>
+  <% end %>
+  <br>
+  <div class="container">
+    <%= link_to cocktails_path do %>
+      <i class="fa fa-undo" aria-hidden="true"></i>
+      <span>Go back to the list</span>
+    <% end %>
+  </div>
+</div>
+
+
